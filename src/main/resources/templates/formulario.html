@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+
+<section class="formulario">
+    <div id="titulo">
+        <h1>PRÉ-CADASTRO PARA BATIZANDOS</h1>
+    </div>
+        <form id="formCadastro" method="POST">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" name="idade" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" required>
+
+            <label for="nomePai">Nome do Pai</label>
+            <input type="text" id="nomePai" name="nomePai">
+
+            <label for="nomeMae">Nome da Mãe</label>
+            <input type="text" id="nomeMae" name="nomeMae">
+
+            <label for="nomeLider">Nome do Líder</label>
+            <input type="text" id="nomeLider" name="nomeLider">
+
+            <label for="rede">Rede</label>
+            <input type="text" id="rede" name="rede">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+</section>
+
+    <script>
+        const form = document.getElementById('formCadastro'); // Corrigir definição do form
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();  // Impede o envio padrão do formulário
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            // Garantir que idade seja número
+            data.idade = parseInt(data.idade, 10);
+
+            // Enviar a requisição com os dados do formulário
+            try {
+                const response = await fetch('http://localhost:8080/dados/salvar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),  // Envia os dados coletados do formulário
+                });
+
+                if (response.ok) {
+                    alert('Usuário cadastrado com sucesso!');
+                    form.reset();  // Limpa o formulário após o envio
+                } else {
+                    const error = await response.json();
+                    alert('Erro: ' + error.message);
+                }
+            } catch (err) {
+                alert('Erro na conexão com o servidor.');
+            }
+        });
+    </script>
+</body>
+</html>

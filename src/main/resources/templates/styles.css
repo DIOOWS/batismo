@@ -1,0 +1,82 @@
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+ body{
+background-image: url(/static/smile.jpg);
+background-repeat: repeat; /* A imagem será repetida */
+background-size: 200px 200px;
+object-fit: cover;
+background-position: center;
+
+ }
+.formulario{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 30px;
+height: 100vh;
+
+}
+
+
+#formCadastro{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 15px;
+background-color: white;
+padding: 30px;
+border: none;
+box-shadow: 0 0 5px #FFC300, 0 0 10px #FFC300, 0 0 20px #FFC300, 0 0 30px black;
+border-radius: 7px;
+color: white;
+text-transform: uppercase;
+background-color: black;
+color: #FFC300;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+#formCadastro input{
+width: 400px;
+height: 25px;
+display: block;
+background-color: red;
+outline: 0;
+background-color: white;
+border-radius: 5px;
+border: 1px solid #FFC300;
+
+
+}
+
+button{
+background-color: #FFC300;
+color: black;
+text-decoration: none;
+padding: 8px 36px;
+text-align: center;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+font-weight: bold;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: 18px;
+}
+
+#titulo{
+color: white;
+padding: 10px 32px;
+background-color: black;
+border-radius: 7px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+
+
